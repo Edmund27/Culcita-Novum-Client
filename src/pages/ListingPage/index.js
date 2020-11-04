@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {Card, CardColumns, Box} from "react-bootstrap";
 import "../../style/map.css";
+import moment from "moment";
 // import {Map, Icon } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
@@ -38,8 +39,8 @@ const [listing, setListing] = useState()
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      {/* to be fixed with moment  */}
-      <small className="text-muted"> Posted on: {listing.createdAt}</small>
+     
+      <small className="text-muted"> Posted on: {moment(listing.createdAt).format("DD-MM-YYYY")}</small>
     </Card.Footer>
   </Card>
 
