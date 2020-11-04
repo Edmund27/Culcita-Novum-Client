@@ -7,7 +7,7 @@ export default function listingReducer(state = initialState, action) {
     
     case "LISTINGS-FETCHED": {
       return {
-        ...state,
+       
         listings: action.payload
       };
     }

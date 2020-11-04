@@ -7,7 +7,7 @@ export default function categoryReducer(state = initialState, action) {
     
     case "CATEGORIES-FETCHED": {
       return {
-        ...state,
+        
         categories: action.payload
       };
     }

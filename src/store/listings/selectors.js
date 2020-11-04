@@ -1,3 +1,4 @@
 export function selectListings(reduxState) {
-  return reduxState.listings;
+  // console.log("selectListings -> reduxState", reduxState)
+  return reduxState.listingReducer.listings;
 }
