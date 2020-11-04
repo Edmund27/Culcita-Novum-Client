@@ -7,6 +7,10 @@ import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -15,6 +19,11 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [image, setImage] = useState("");
   const [loadingImage, setLoadingImage] = useState("");
+  const [address, setAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    lat: null,
+    lng: null,
+  });
 
 
   const dispatch = useDispatch();
@@ -46,6 +55,14 @@ export default function SignUp() {
     e.preventDefault();
     uploadImage(e);
   }
+
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
+    setAddress(value);
+    setCoordinates(latLng);
+  };
+
 
   useEffect(() => {
     if (token !== null) {
@@ -130,6 +147,55 @@ console.log("this is password", image)
               />
               {loadingImage ? "Uploading your image..." : <img src={image} />}
               <br />
+
+              <PlacesAutocomplete
+                  value={address}
+                  onChange={setAddress}
+                  onSelect={handleSelect}
+                >
+{({
+                    getInputProps,
+                    suggestions,
+                    getSuggestionItemProps,
+                    loading,
+                  }) => (
+                    <div>
+                      <p>
+                        <Form.Label>Address</Form.Label>
+                        <Form.Control
+                          {...getInputProps({ placeholder: "114 Leidseplein" })}
+                        />
+                        <Form.Text id="email-helper-text">
+                          please select from suggestions.
+                        </Form.Text>
+                      </p>
+                      <div>
+                        {loading ? <div> Loading addresses... </div> : null}
+
+                        {suggestions.map((suggestion) => {
+                          const style = {
+                            color: suggestion.active ? "black" : "black",
+                            backgroundColor: suggestion.active
+                              ? "grey"
+                              : "white",
+                          };
+
+                          return (
+                            <div
+                              key={suggestion.placeId}
+                              {...getSuggestionItemProps(suggestion, { style })}
+                            >
+                              {suggestion.description}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </PlacesAutocomplete>
+                <p>{address}</p>
+              
+
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
             Sign up
