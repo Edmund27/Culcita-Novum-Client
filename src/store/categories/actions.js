@@ -14,6 +14,8 @@ export async function fetchCategories(dispatch, getState) {
 
   const res = await axios.get(`${apiUrl}/categories`);
 
+  
+
   const data = res.data;
   dispatch(appDoneLoading());
   dispatch(categoriesFetched(data));
