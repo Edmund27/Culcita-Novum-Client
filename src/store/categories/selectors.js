@@ -1,3 +1,4 @@
 export function selectCategories(reduxState) {
-  return reduxState.categories;
+  // console.log("selectCategories -> reduxState", reduxState)
+  return reduxState.categoryReducer.categories;
 }

@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchCategories} from "../../store/categories/actions"
+import {selectCategories} from "../../store/categories/selectors"
+
 import { Col, Form, Container, Button, InputGroup, FormControl } from "react-bootstrap";
 
 export default function CreateListing() { 
@@ -7,6 +11,15 @@ const [description, setDescription] = useState("")
 const [image, setImage] = useState("");
 const [loadingImage, setLoadingImage] = useState("");
 const [cat, setCat] = useState("")
+
+const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(fetchCategories);
+}, [dispatch]);
+
+
+  const categories = useSelector(selectCategories);
+  // console.log("CreateListing -> categories", categories)
 
 const uploadImage = async (e) => {
   const files = e.target.files;
@@ -45,13 +58,9 @@ console.log("this is category value", cat)
 
   return (
 
-
-   
-
-
       <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Post an Ad</h1>
+        <h1 className="mt-5 mb-5">Post a new Ad</h1>
         <Form.Group >
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -83,10 +92,16 @@ console.log("this is category value", cat)
               <br />
               <Form.Group controlId="exampleForm.SelectCustom">
     <Form.Label>Choose a category: </Form.Label>
+
+    
     <Form.Control as="select" onChange={(event) => setCat(event.target.value)} >
-      <option value={1}>1 </option>
-      <option value={2}>2 </option>
-      <option value={3}>3 </option>
+
+    {categories.map((c)=>{
+return <option value={c.id}>{c.name} </option>
+
+    })}
+      
+      
       
     </Form.Control>
         <Form.Group className="mt-5">

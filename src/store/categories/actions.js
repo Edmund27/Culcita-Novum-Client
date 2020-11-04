@@ -12,7 +12,7 @@ export function categoriesFetched(data) {
 export async function fetchCategories(dispatch, getState) {
   dispatch(appLoading());
 
-  const res = await axios.get(apiUrl);
+  const res = await axios.get(`${apiUrl}/categories`);
 
   const data = res.data;
   dispatch(appDoneLoading());
