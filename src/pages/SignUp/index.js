@@ -72,18 +72,24 @@ export default function SignUp() {
 
   function submitForm(event) {
     event.preventDefault();
-console.log("this is name", name )
-console.log("this is surname", surname)
-console.log("this is email", email)
-console.log("this is password", password)
-console.log("this is password", image)
-    // dispatch(signUp(name, surname, email, password));
+// console.log("this is name", name )
+// console.log("this is surname", surname)
+// console.log("this is email", email)
+// console.log("this is password", password)
+// console.log("this is image", image)
+// console.log("these are the coordinates" ,coordinates)
+    dispatch(signUp(name, surname, email, password, image, parseFloat(coordinates.lat),
+        parseFloat(coordinates.lng),));
 
     setEmail("");
     setPassword("");
     setName("");
     setSurname("")
     setImage("")
+    setCoordinates({
+      lat: null,
+      lng: null,
+    })
   }
 
   return (
