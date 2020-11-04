@@ -4,6 +4,7 @@ import React, { useEffect}  from "react";
 // import {fetchListings} from "../../store/listings/actions"
 // import {selectListings} from "../../store/listings/selectors"
 // import {selectCategories} from "../../store/categories/selectors"
+// import { Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -24,7 +25,9 @@ export default function Home() {
   return (
     <div>
 <h1>Welcome</h1>
-
+{/* <button >
+        <Link to={`/listings/${l.id}`}>Show Details</Link>
+      </button> */}
     </div>
   );
 }
