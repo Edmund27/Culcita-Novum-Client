@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {Card, CardColumns, Button} from "react-bootstrap";
+import {Card, CardGroup, Container, Button, Jumbotron, Col, Image} from "react-bootstrap";
 import "../../style/map.css";
 import moment from "moment";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
@@ -29,8 +29,30 @@ const [listing, setListing] = useState()
 
   // console.log("WHAT IS LISTING", listing)
   return listing ? ( 
-<CardColumns>
-    <Card style={{ width: '25rem'  }}>
+    <Jumbotron>
+<Container>
+<CardGroup>
+<Card >
+<MapContainer style={{ width: '30rem'  }}   center={[listing.user.lat, listing.user.lng]} zoom={13} scrollWheelZoom={false}>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  />
+<Marker position={[listing.user.lat, listing.user.lng]}>
+      </Marker>
+</MapContainer>
+
+<Col xs="2" md="2">
+      <Image src={listing.user.image} roundedCircle />
+    </Col>
+  <Card.Body>
+  <Card.Title>Posted By: {listing.user.name}</Card.Title>
+    Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
+  <Link to={`/listings/user/${listing.user.id}`}> <Button variant="primary">See other listings</Button></Link> 
+  </Card.Body>
+</Card>
+
+<Card style={{ width: '25rem'  }}>
     <Card.Img variant="top" src={listing.image}  />
     <Card.Body>
       <Card.Title>{listing.title}</Card.Title>
@@ -43,28 +65,9 @@ const [listing, setListing] = useState()
       <small className="text-muted"> Posted on: {moment(listing.createdAt).format("DD-MM-YYYY")}</small>
     </Card.Footer>
   </Card>
-  <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={listing.user.image} />
-  <Card.Body>
-  <Card.Title>Posted By: {listing.user.name}</Card.Title>
-    Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
-  <Link to={`/listings/user/${listing.user.id}`}> <Button variant="primary">See other listings</Button></Link> 
-  </Card.Body>
-</Card>
-
-
-<Card style={{ width: '25rem'  }}>
-<MapContainer style={{ width: '25rem'  }}   center={[listing.user.lat, listing.user.lng]} zoom={13} scrollWheelZoom={false}>
-  <TileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-<Marker position={[listing.user.lat, listing.user.lng]}>
-      </Marker>
-</MapContainer>
-</Card>
- </CardColumns>
-
+  </CardGroup>
+ </Container>
+ </Jumbotron>
   ): null
 
 } 

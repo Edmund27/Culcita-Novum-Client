@@ -18,10 +18,10 @@ export default function MyPage() {
     <div>
 <h1> Your Dashboard: </h1>
 
-<CardColumns>
 
+<div className="row">
   {user.listings && user.listings.map((l)=> {
-return <Card>
+return <Card style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.9"}}>
     <Card.Img variant="top" src={l.image} />
     <Card.Body>
       <Card.Title>{l.title}</Card.Title>
@@ -32,9 +32,9 @@ return <Card>
   </Card>
 
   })}
-  
-  </CardColumns>
-<Button variant="outline-primary">
+  </div>
+
+<Button variant="light" style={{ width: "25%", padding: "20px",  opacity: "0.9"}} >
         <Link to={`/create`}> post a new ad </Link>
       </Button> 
     </div>

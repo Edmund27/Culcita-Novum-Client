@@ -5,7 +5,7 @@ import {fetchListings} from "../../store/listings/actions"
 import {selectListings} from "../../store/listings/selectors"
 import {selectCategories} from "../../store/categories/selectors"
 import { Link } from "react-router-dom";
-import { Jumbotron, Dropdown, Form, InputGroup, Button, FormControl, CardColumns, Card, Container} from "react-bootstrap";
+import { CardDeck, Jumbotron, Dropdown, Form, InputGroup, Button, FormControl, CardColumns, Card, Container} from "react-bootstrap";
 import moment from "moment";
 
 
@@ -116,13 +116,16 @@ return <option value={c.id}>{c.name} </option>
           </InputGroup> 
           </Container>
           </Jumbotron>
-         
+          
+          
+          <div className="row">
+          
 {searchedFor.length === 0 ? "Sorry, 0 results found" :
 searchedFor.map((l)=>{
 return <>
 
-<CardColumns>
-    <Card key={l.id} >
+
+    <Card key={l.id} style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.9"}}  >
     <Card.Img variant="top" src={l.image}  />
     <Card.Body>
       <Card.Title>{l.title}</Card.Title>
@@ -130,7 +133,7 @@ return <>
       {l.description}
       </Card.Text>
     </Card.Body>
-    <Button>
+    <Button variant="outline-primary">
         <Link to={`/listings/${l.id}`}> Show Details </Link>
       </Button>
     <Card.Footer>
@@ -138,12 +141,13 @@ return <>
       <small className="text-muted"> Posted on: {moment(l.createdAt).format("DD-MM-YYYY")}</small>
     </Card.Footer>
   </Card>
-  </CardColumns>
-
+ 
+  
  
 </>
 })}
 
+</div>
     </div>
   );
 }

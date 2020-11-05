@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {Card, CardGroup, Button, Jumbotron, Container} from "react-bootstrap";
+import {Card, CardGroup, Button, Jumbotron, Container, Col, Image} from "react-bootstrap";
 import moment from "moment";
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
@@ -15,8 +15,8 @@ console.log("UserPage -> listing", data)
     
     async function fetchListing() {
       const results = await axios.get(
-        `http://localhost:4000/listings/user/${userId}`
-        // `${apiUrl}/listings/user/${userId}`
+        // `http://localhost:4000/listings/user/${userId}`
+        `${apiUrl}/listings/user/${userId}`
       );
       // console.log("fetchListing -> results", results)
       
@@ -30,7 +30,10 @@ console.log("UserPage -> listing", data)
 return data ?(
 
 <div>
-<Jumbotron fluid>
+<Jumbotron fluid >
+<Col xs="2" md="2">
+      <Image src={data && data.image} roundedCircle />
+    </Col>
   <Container>
     <h1>User: {data.name}</h1>
     <p>
