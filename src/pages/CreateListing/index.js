@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchCategories} from "../../store/categories/actions"
 import {selectCategories} from "../../store/categories/selectors"
-
+import { addPost} from "../../store/user/actions"
 import { Col, Form, Container, Button, InputGroup, FormControl } from "react-bootstrap";
 
 export default function CreateListing() { 
@@ -48,11 +48,16 @@ function handleUpload(e) {
 
 function submitForm(e){
   e.preventDefault();
+dispatch(addPost(title, description, image, cat))
+// console.log("this is title", title)
+// console.log("this is description", description)
+// console.log("this is imageurl", image)
+// console.log("this is category value", cat)
 
-console.log("this is title", title)
-console.log("this is description", description)
-console.log("this is imageurl", image)
-console.log("this is category value", cat)
+setDescription("")
+setTitle("")
+setImage("")
+setCat("")
 
 }
 
