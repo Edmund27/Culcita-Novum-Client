@@ -5,25 +5,26 @@ import {fetchListings} from "../../store/listings/actions"
 import {selectListings} from "../../store/listings/selectors"
 import {selectCategories} from "../../store/categories/selectors"
 import { Link } from "react-router-dom";
-import { Dropdown, Form } from "react-bootstrap";
+import { Dropdown, Form, InputGroup, Button, FormControl } from "react-bootstrap";
 
 export default function Home() {
-
   const [cat, setCat] = useState("")
-  console.log("THIS IS CAT" ,cat)
+  const [search, setSearch] = useState([])
+
   const dispatch = useDispatch();
-
   const listings = useSelector(selectListings);
-  // console.log("Home -> listings", listings)
   const categories = useSelector(selectCategories);
-  // console.log("Home -> categories", categories)
+  
+  const queryParam = encodeURIComponent(search);
 
+  
   useEffect(() => {
     dispatch(fetchCategories);
   }, [dispatch]);
   useEffect(() => {
     dispatch(fetchListings);
   }, [dispatch]);
+
 
   let filteredListings;
   if (cat === "all")
@@ -54,14 +55,12 @@ export default function Home() {
     }else if (cat === "8")
     {
       filteredListings = listings.filter((l)=> {return l.categoryId === 8} )
-    }
-  else {
+    } else if (search !== []) 
+  { filteredListings = listings.filter((l) => { return l.title.toLowerCase().includes(queryParam) })
+} else { filteredListings = listings}
       
-      filteredListings = listings}
+     
       
-  
-
-  console.log("what is listings", listings)
   return (
     <div>
 <h1>Welcome</h1>
@@ -84,6 +83,25 @@ return <option value={c.id}>{c.name} </option>
    
   </Dropdown>
 
+  <InputGroup>
+            
+            <FormControl
+              
+              placeholder="Search items"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            {search ? (
+              <>
+                <Button
+                 
+                  onClick={() => setSearch("")}
+                >
+                  Clear
+                </Button>
+              </>
+            ) : null}
+          </InputGroup>
 
 {filteredListings.map((l)=>{
 return <>

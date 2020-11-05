@@ -42,7 +42,7 @@ const [listing, setListing] = useState()
     </Card.Footer>
   </Card>
   <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="holder.js/100px180" />
+  <Card.Img variant="top" src={listing.user.image} />
   <Card.Body>
   <Card.Title>Posted By: {listing.user.name}</Card.Title>
     Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
