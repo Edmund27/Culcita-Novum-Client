@@ -99,7 +99,7 @@ export const fetchUserInfo = () => {
     const token = selectToken(getState());
     if (token === null) return;
     try {
-      const response = await axios.get("http://localhost:4000/mypage", {
+      const response = await axios.get(`${apiUrl}/mypage`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log("fetchUserInfo -> response", response)
@@ -125,7 +125,7 @@ export const getUserWithStoredToken = () => {
     try {
       // if we do have a token,
       // check wether it is still valid or if it is expired
-      const response = await axios.get(`${apiUrl}/me`, {
+      const response = await axios.get(`${apiUrl}/mypage`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -153,7 +153,7 @@ export function addPost(title, description, image, categoryId) {
     if (token === null) return;
     try {
       const response = await axios.post(
-        `http://localhost:4000/create`,
+        `${apiUrl}/create`,
         {
           title,
           description,

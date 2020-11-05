@@ -5,7 +5,9 @@ import {fetchListings} from "../../store/listings/actions"
 import {selectListings} from "../../store/listings/selectors"
 import {selectCategories} from "../../store/categories/selectors"
 import { Link } from "react-router-dom";
-import { Dropdown, Form, InputGroup, Button, FormControl } from "react-bootstrap";
+import { Dropdown, Form, InputGroup, Button, FormControl, CardColumns, Card} from "react-bootstrap";
+import moment from "moment";
+
 
 export default function Home() {
   const [cat, setCat] = useState("")
@@ -55,12 +57,15 @@ export default function Home() {
     }else if (cat === "8")
     {
       filteredListings = listings.filter((l)=> {return l.categoryId === 8} )
-    } else if (search !== []) 
-  { filteredListings = listings.filter((l) => { return l.title.toLowerCase().includes(queryParam) })
-} else { filteredListings = listings}
+    } 
+ else { filteredListings = listings}
       
-     
-      
+  
+let searchedFor;
+if (search !== []) 
+{ searchedFor = filteredListings.filter((l) => { return l.title.toLowerCase().includes(queryParam) }) }
+else {searchedFor = filteredListings}
+
   return (
     <div>
 <h1>Welcome</h1>
@@ -91,7 +96,7 @@ return <option value={c.id}>{c.name} </option>
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            {search ? (
+            {
               <>
                 <Button
                  
@@ -100,16 +105,32 @@ return <option value={c.id}>{c.name} </option>
                   Clear
                 </Button>
               </>
-            ) : null}
+            }
           </InputGroup>
 
-{filteredListings.map((l)=>{
+{searchedFor.map((l)=>{
 return <>
 
-<h3 key={l.id}>{l.title}</h3>
-<button>
+<CardColumns>
+    <Card key={l.id} >
+    <Card.Img variant="top" src={l.image}  />
+    <Card.Body>
+      <Card.Title>{l.title}</Card.Title>
+      <Card.Text>
+      {l.description}
+      </Card.Text>
+    </Card.Body>
+    <Button>
         <Link to={`/listings/${l.id}`}> Show Details </Link>
-      </button> 
+      </Button>
+    <Card.Footer>
+     
+      <small className="text-muted"> Posted on: {moment(l.createdAt).format("DD-MM-YYYY")}</small>
+    </Card.Footer>
+  </Card>
+  </CardColumns>
+
+ 
 </>
 })}
 
