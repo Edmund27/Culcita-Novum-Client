@@ -11,7 +11,7 @@ export default function MyPage() {
     dispatch(fetchUserInfo());
   }, [dispatch]);
   const user = useSelector(selectUser)
-  console.log("MyPage -> user", user.listings)
+  // console.log("MyPage -> user", user.listings)
   
   
   return (

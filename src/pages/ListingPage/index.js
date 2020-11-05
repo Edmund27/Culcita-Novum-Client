@@ -25,7 +25,7 @@ const [listing, setListing] = useState()
     fetchListing()
   }, [listingId]);
 
-  console.log("WHAT IS LISTING", listing)
+  // console.log("WHAT IS LISTING", listing)
   return listing ? ( 
 <CardColumns>
     <Card style={{ width: '25rem'  }}>
@@ -45,7 +45,7 @@ const [listing, setListing] = useState()
   <Card.Img variant="top" src="holder.js/100px180" />
   <Card.Body>
   <Card.Title>Posted By: {listing.user.name}</Card.Title>
-    
+    Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
     <Button variant="primary">See other listings</Button>
   </Card.Body>
 </Card>
