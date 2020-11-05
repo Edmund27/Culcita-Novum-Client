@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {Card, CardColumns, Box} from "react-bootstrap";
+import {Card, CardColumns, Button} from "react-bootstrap";
 import "../../style/map.css";
 import moment from "moment";
-// import {Map, Icon } from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import axios from "axios";
 
 
@@ -43,7 +41,14 @@ const [listing, setListing] = useState()
       <small className="text-muted"> Posted on: {moment(listing.createdAt).format("DD-MM-YYYY")}</small>
     </Card.Footer>
   </Card>
-
+  <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="holder.js/100px180" />
+  <Card.Body>
+  <Card.Title>Posted By: {listing.user.name}</Card.Title>
+    
+    <Button variant="primary">See other listings</Button>
+  </Card.Body>
+</Card>
 
 
 <Card style={{ width: '25rem'  }}>

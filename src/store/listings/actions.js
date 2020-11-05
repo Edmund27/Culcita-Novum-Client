@@ -12,7 +12,9 @@ export function listingsFetched(listings) {
 export async function fetchListings(dispatch, getState) {
   dispatch(appLoading());
 
-  const res = await axios.get(`${apiUrl}/listings`);
+  // const res = await axios.get(`${apiUrl}/listings`);
+
+  const res = await axios.get(`http://localhost:4000/listings`);
   const data = res.data;
   // console.log("fetchListings -> data", data)
   dispatch(appDoneLoading());
