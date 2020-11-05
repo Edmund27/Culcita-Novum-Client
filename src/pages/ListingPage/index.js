@@ -5,6 +5,8 @@ import "../../style/map.css";
 import moment from "moment";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import axios from "axios";
+import { apiUrl } from "../../config/constants";
+import { Link } from "react-router-dom";
 
 
 export default function ListingPage() { 
@@ -16,7 +18,7 @@ const [listing, setListing] = useState()
     
     async function fetchListing() {
       const results = await axios.get(
-        `http://localhost:4000/listings/${listingId}`
+        `${apiUrl}/listings/${listingId}`
       );
       
       setListing(results.data);
@@ -46,7 +48,7 @@ const [listing, setListing] = useState()
   <Card.Body>
   <Card.Title>Posted By: {listing.user.name}</Card.Title>
     Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
-    <Button variant="primary">See other listings</Button>
+  <Link to={`/listings/user/${listing.user.id}`}> <Button variant="primary">See other listings</Button></Link> 
   </Card.Body>
 </Card>
 

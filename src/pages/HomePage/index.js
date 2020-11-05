@@ -5,7 +5,7 @@ import {fetchListings} from "../../store/listings/actions"
 import {selectListings} from "../../store/listings/selectors"
 import {selectCategories} from "../../store/categories/selectors"
 import { Link } from "react-router-dom";
-import { Dropdown, Form, InputGroup, Button, FormControl, CardColumns, Card} from "react-bootstrap";
+import { Jumbotron, Dropdown, Form, InputGroup, Button, FormControl, CardColumns, Card, Container} from "react-bootstrap";
 import moment from "moment";
 
 
@@ -57,9 +57,13 @@ export default function Home() {
     }else if (cat === "8")
     {
       filteredListings = listings.filter((l)=> {return l.categoryId === 8} )
+    } else if (cat === "9")
+    {
+      filteredListings = listings.filter((l)=> {return l.categoryId === 9} )
     } 
  else { filteredListings = listings}
       
+ 
   
 let searchedFor;
 if (search !== []) 
@@ -68,7 +72,9 @@ else {searchedFor = filteredListings}
 
   return (
     <div>
+      <Jumbotron fluid>
 <h1>Welcome</h1>
+<Container>
 <Dropdown>
     
 
@@ -88,6 +94,7 @@ return <option value={c.id}>{c.name} </option>
    
   </Dropdown>
 
+
   <InputGroup>
             
             <FormControl
@@ -106,9 +113,12 @@ return <option value={c.id}>{c.name} </option>
                 </Button>
               </>
             }
-          </InputGroup>
-
-{searchedFor.map((l)=>{
+          </InputGroup> 
+          </Container>
+          </Jumbotron>
+         
+{searchedFor.length === 0 ? "Sorry, 0 results found" :
+searchedFor.map((l)=>{
 return <>
 
 <CardColumns>

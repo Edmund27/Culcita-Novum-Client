@@ -14,6 +14,7 @@ import ListingPage from "./pages/ListingPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import  UserPage from "./pages/UserPage"
 import { Jumbotron } from "react-bootstrap";
 
 
@@ -36,7 +37,8 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/listings/:id" component={ListingPage} />
+        <Route exact path="/listings/:id" component={ListingPage} />
+        <Route path="/listings/user/:id" component={UserPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
