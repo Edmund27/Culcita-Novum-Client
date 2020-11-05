@@ -18,6 +18,12 @@ const loginSuccess = userWithToken => {
     payload: userWithToken
   };
 };
+const userInfo = (data) => {
+  return {
+    type: "USER_PROFILE",
+    payload: data,
+  };
+};
 
 const tokenStillValid = userWithoutToken => ({
   type: TOKEN_STILL_VALID,
@@ -71,7 +77,7 @@ export const login = (email, password) => {
         email,
         password
       });
-
+console.log(response.data)
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
       dispatch(appDoneLoading());
@@ -87,6 +93,25 @@ export const login = (email, password) => {
     }
   };
 };
+
+export const fetchUserInfo = () => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState());
+    if (token === null) return;
+    try {
+      const response = await axios.get("http://localhost:4000/mypage", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("fetchUserInfo -> response", response)
+
+      dispatch(userInfo(response.data.user));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+
 
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {

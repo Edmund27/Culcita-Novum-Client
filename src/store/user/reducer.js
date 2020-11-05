@@ -3,7 +3,8 @@ import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from "./actions";
 const initialState = {
   token: localStorage.getItem("token"),
   name: null,
-  email: null
+  email: null,
+  
 };
 
 export default (state = initialState, action) => {
@@ -24,7 +25,11 @@ export default (state = initialState, action) => {
           ...state,
           listings: [...state.user.listings, action.payload],
         };
-        
+        case "USER_PROFILE":
+          return {
+            ...state,
+            ...action.payload
+          };   
     default:
       return state;
   }
