@@ -7,7 +7,7 @@ import {selectCategories} from "../../store/categories/selectors"
 import { Link } from "react-router-dom";
 import { CardDeck, Jumbotron, Dropdown, Form, InputGroup, Button, FormControl, CardColumns, Card, Container} from "react-bootstrap";
 import moment from "moment";
-
+import "../../style/home.css"
 
 export default function Home() {
   const [cat, setCat] = useState("")
@@ -72,14 +72,15 @@ else {searchedFor = filteredListings}
 
   return (
     <div>
-      <Jumbotron fluid>
-<h1>Welcome</h1>
-<Container>
+      <div className="homePageJumbo">
+      <Container>
+
+
 <Dropdown>
     
-
+<div className="formLabel">
     <Form.Label>Choose a category: </Form.Label>
-
+</div>
     
 <Form.Control as="select" onChange={(event) => setCat(event.target.value)} >
 
@@ -114,9 +115,10 @@ return <option value={c.id}>{c.name} </option>
               </>
             }
           </InputGroup> 
-          </Container>
-          </Jumbotron>
+         
           
+          </Container>
+          </div>
           
           <div className="row">
           
