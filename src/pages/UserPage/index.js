@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Card, CardGroup, Jumbotron, Container, Col, Image } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import { Card, CardGroup, Button, Jumbotron, Container, Col, Image } from "react-bootstrap";
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
-
+import "../../style/userPage.css"
 export default function UserPage() {
   const [data, setData] = useState()
   console.log("UserPage -> listing", data)
@@ -28,36 +28,40 @@ export default function UserPage() {
 
   return data ? (
 
-    <div>
-      <Jumbotron fluid >
-        <Col xs="2" md="2">
-          <Image src={data && data.image} roundedCircle />
-        </Col>
+    <div> 
+      <div className="userPage">
         <Container>
-          <h1>User: {data.name}</h1>
+          <div className="userInfo">
+            
+        <Image width="10%" src={data && data.image} roundedCircle style={{align: "left"}}/>
+          <h1>{data.name}</h1>
           <p>
             Has {data.listings.length === 0 ? "no" : data.listings.length} ads
     </p>
+    </div>
         </Container>
-      </Jumbotron>
-      <CardGroup>
-
+      </div>
+    
+      <div className="row">
         {data.listings.map((l) => {
-          return <Card>
-            <Card.Img variant="top" src={l.image} />
+          return <Card style={{width: "350px", padding: "20px", margin: "20px", opacity: "0.9"}} >
+            <Card.Img variant="top" src={l.image} width="60%" height="250px"/>
             <Card.Body>
               <Card.Title>{l.title}</Card.Title>
               <Card.Text>
                 {l.description}
               </Card.Text>
             </Card.Body>
+            <Button variant="outline-primary">
+        <Link to={`/listings/${l.id}`}> Check me out </Link>
+      </Button>
             <Card.Footer>
               <small className="text-muted">{l.createdAt}</small>
             </Card.Footer>
           </Card>
         })}
-
-      </CardGroup>
+</div>
+     
     </div>) : null
   // console.log("WHAT IS LISTING", listing)
   //   return listing ? ( 
