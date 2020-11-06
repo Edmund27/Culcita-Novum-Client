@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Card, CardGroup, Container, Button, Jumbotron, Col, Image } from "react-bootstrap";
 import "../../style/map.css";
+import "../../style/listingPage.css"
 import moment from "moment";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import axios from "axios";
@@ -51,7 +52,17 @@ export default function ListingPage() {
   }
 
   return listing ? (
-    <Jumbotron>
+<>
+<div className="listingPage">
+    <Container width="90%">
+      <div className="reuseText">
+<h1 className="reuse"> (Re-Use) </h1>
+<p classname="infoWaste"> <em> 
+- It saves tons of waste from ending up in landfills which is actually the worst option of all aside from the ocean due to the methane gas issue (86 times stronger than CO2)
+  </em></p>
+    </div>
+    </Container>
+    </div>
       <Container>
         <CardGroup>
           <Card >
@@ -90,7 +101,7 @@ export default function ListingPage() {
           </Card>
         </CardGroup>
       </Container>
-    </Jumbotron>
+  </>
   ) : null
 
 } 

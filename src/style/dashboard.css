@@ -1,0 +1,23 @@
+.dashboard {
+  background-image: url("https://res.cloudinary.com/dztzswpcp/image/upload/v1604656745/4c7c2afdc3b822c896b5cc10e999cf52_wbntfg.jpg");
+  opacity: 0.9;
+  width: 100%;
+  height: 300px;
+}
+
+.dashTitle {
+  background-color: white;
+  opacity: 0.8;
+  width: 100%;
+  height: 200px;
+  margin: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dash {
+  padding: 50px;
+  text-align: center;
+  font-family: "Major Mono Display", monospace;
+  font-size: 40px;
+}

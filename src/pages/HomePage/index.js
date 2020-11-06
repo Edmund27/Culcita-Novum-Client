@@ -74,12 +74,13 @@ else {searchedFor = filteredListings}
     <div>
       <div className="homePageJumbo">
       <Container>
-
+<div className="select">
 
 <Dropdown>
     
 <div className="formLabel">
-    <Form.Label>Choose a category: </Form.Label>
+    <Form.Label style={{ fontFamily: "Major Mono Display, monospace",
+  fontSize: "20px"}}>Choose a category </Form.Label>
 </div>
     
 <Form.Control as="select" onChange={(event) => setCat(event.target.value)} >
@@ -115,11 +116,12 @@ return <option value={c.id}>{c.name} </option>
               </>
             }
           </InputGroup> 
-         
+          </div>
           
           </Container>
           </div>
           
+          <div className="alignCards">
           <div className="row">
           
 {searchedFor.length === 0 ? "Sorry, 0 results found" :
@@ -127,8 +129,8 @@ searchedFor.map((l)=>{
 return <>
 
 
-    <Card key={l.id} style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.9"}}  >
-    <Card.Img variant="top" src={l.image}  />
+    <Card key={l.id} style={{width: "350px", padding: "20px", margin: "20px", opacity: "0.9"}}  >
+    <Card.Img variant="top" src={l.image} width="60%" height="250px" />
     <Card.Body>
       <Card.Title>{l.title}</Card.Title>
       <Card.Text>
@@ -150,6 +152,8 @@ return <>
 })}
 
 </div>
+</div>
+  
     </div>
   );
 }
