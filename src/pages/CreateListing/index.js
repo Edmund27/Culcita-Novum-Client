@@ -4,14 +4,14 @@ import { fetchCategories } from "../../store/categories/actions"
 import { selectCategories } from "../../store/categories/selectors"
 import { addPost } from "../../store/user/actions"
 import { Col, Form, Container, Button, InputGroup, FormControl } from "react-bootstrap";
-
+import { useHistory } from "react-router-dom";
 export default function CreateListing() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [image, setImage] = useState("");
   const [loadingImage, setLoadingImage] = useState("");
   const [cat, setCat] = useState("")
-
+  const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategories);
@@ -49,6 +49,7 @@ export default function CreateListing() {
   function submitForm(e) {
     e.preventDefault();
     dispatch(addPost(title, description, image, cat))
+
     // console.log("this is title", title)
     // console.log("this is description", description)
     // console.log("this is imageurl", image)
@@ -58,7 +59,7 @@ export default function CreateListing() {
     setTitle("")
     setImage("")
     setCat("")
-
+history.push("/mypage")
   }
 
   return (

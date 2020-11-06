@@ -66,7 +66,7 @@ export default function ListingPage() {
       <Container>
         <CardGroup>
           <Card >
-            <MapContainer style={{ width: '30rem' }} center={[listing.user.lat, listing.user.lng]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer style={{ width: '300px', height: "300px", marginLeft: "auto", marginRight: "auto"}} center={[listing.user.lat, listing.user.lng]} zoom={13} scrollWheelZoom={false}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -74,19 +74,18 @@ export default function ListingPage() {
               <Marker position={[listing.user.lat, listing.user.lng]}>
               </Marker>
             </MapContainer>
-
-            <Col xs="2" md="2">
-              <Image src={listing.user.image} roundedCircle />
-            </Col>
+            
+              
+            
             <Card.Body>
+            <Image style={{marginLeft: "20px", marginBottom: "20px"}} src={listing.user.image} roundedCircle width="20%"/>
               <Card.Title>Posted By: {listing.user.name}</Card.Title>
     Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
               <Link to={`/listings/user/${listing.user.id}`}> <Button variant="primary">See other listings</Button></Link>
-              <Button variant="primary" onClick={() => openChat()}>contact</Button>
+              <Button variant="primary" onClick={() => openChat()}> Contact </Button>
             </Card.Body>
-          </Card>
-
-          <Card style={{ width: '25rem' }}>
+            </Card>
+            <Card style={{ width: '25rem' }}>
             <Card.Img variant="top" src={listing.image} />
             <Card.Body>
               <Card.Title>{listing.title}</Card.Title>
@@ -99,7 +98,12 @@ export default function ListingPage() {
               <small className="text-muted"> Posted on: {moment(listing.createdAt).format("DD-MM-YYYY")}</small>
             </Card.Footer>
           </Card>
-        </CardGroup>
+</CardGroup>
+            
+        
+
+         
+        
       </Container>
   </>
   ) : null
