@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { selectMessages } from "../../store/chats/selectors";
 import { selectUser } from "../../store/user/selectors";
-import { selectOnlineUsers } from "../../store/users/selectors";
 import { selectSender } from "../../store/chats/selectors";
 import '../../style/chat.css'
 import Messages from "../../components/Messages"
@@ -24,7 +23,6 @@ export default function ChatScreen() {
     const allMessages = useSelector(selectMessages);
     const user = useSelector(selectUser);
     const receiver = useSelector(selectSender);
-    const onlineUsers = useSelector(selectOnlineUsers);
 
     const messagesEndRef = useRef(null)
 

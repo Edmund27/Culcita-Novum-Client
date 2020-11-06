@@ -72,14 +72,14 @@ export default function SignUp() {
 
   function submitForm(event) {
     event.preventDefault();
-// console.log("this is name", name )
-// console.log("this is surname", surname)
-// console.log("this is email", email)
-// console.log("this is password", password)
-// console.log("this is image", image)
-// console.log("these are the coordinates" ,coordinates)
+    // console.log("this is name", name )
+    // console.log("this is surname", surname)
+    // console.log("this is email", email)
+    // console.log("this is password", password)
+    // console.log("this is image", image)
+    // console.log("these are the coordinates" ,coordinates)
     dispatch(signUp(name, surname, email, password, image, parseFloat(coordinates.lat),
-        parseFloat(coordinates.lng),));
+      parseFloat(coordinates.lng)));
 
     setEmail("");
     setPassword("");
@@ -117,7 +117,7 @@ export default function SignUp() {
             required
           />
         </Form.Group>
-        
+
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -145,62 +145,62 @@ export default function SignUp() {
 
         <Form.Label>Profile Picture</Form.Label>
         <Form.Control
-                type="file"
-                name="file"
-                placeholder="Upload an image"
-                onChange={handleUpload}
-                
-              />
-              {loadingImage ? "Uploading your image..." : <img src={image} />}
-              <br />
+          type="file"
+          name="file"
+          placeholder="Upload an image"
+          onChange={handleUpload}
 
-              <PlacesAutocomplete
-                  value={address}
-                  onChange={setAddress}
-                  onSelect={handleSelect}
-                >
-{({
-                    getInputProps,
-                    suggestions,
-                    getSuggestionItemProps,
-                    loading,
-                  }) => (
-                    <div>
-                      <p>
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control
-                          {...getInputProps({ placeholder: "114 Leidseplein" })}
-                        />
-                        <Form.Text id="email-helper-text">
-                          please select from suggestions.
+        />
+        {loadingImage ? "Uploading your image..." : <img alt="upload" src={image} />}
+        <br />
+
+        <PlacesAutocomplete
+          value={address}
+          onChange={setAddress}
+          onSelect={handleSelect}
+        >
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
+              <div>
+                <p>
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
+                    {...getInputProps({ placeholder: "114 Leidseplein" })}
+                  />
+                  <Form.Text id="email-helper-text">
+                    please select from suggestions.
                         </Form.Text>
-                      </p>
-                      <div>
-                        {loading ? <div> Loading addresses... </div> : null}
+                </p>
+                <div>
+                  {loading ? <div> Loading addresses... </div> : null}
 
-                        {suggestions.map((suggestion) => {
-                          const style = {
-                            color: suggestion.active ? "black" : "black",
-                            backgroundColor: suggestion.active
-                              ? "grey"
-                              : "white",
-                          };
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      color: suggestion.active ? "black" : "black",
+                      backgroundColor: suggestion.active
+                        ? "grey"
+                        : "white",
+                    };
 
-                          return (
-                            <div
-                              key={suggestion.placeId}
-                              {...getSuggestionItemProps(suggestion, { style })}
-                            >
-                              {suggestion.description}
-                            </div>
-                          );
-                        })}
+                    return (
+                      <div
+                        key={suggestion.placeId}
+                        {...getSuggestionItemProps(suggestion, { style })}
+                      >
+                        {suggestion.description}
                       </div>
-                    </div>
-                  )}
-                </PlacesAutocomplete>
-                <p>{address}</p>
-              
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+        </PlacesAutocomplete>
+        <p>{address}</p>
+
 
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
