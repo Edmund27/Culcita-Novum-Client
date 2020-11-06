@@ -81,8 +81,8 @@ export default function ListingPage() {
             <Image style={{marginLeft: "20px", marginBottom: "20px"}} src={listing.user.image} roundedCircle width="20%"/>
               <Card.Title>Posted By: {listing.user.name}</Card.Title>
     Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
-              <Link to={`/listings/user/${listing.user.id}`}> <Button variant="primary">See other listings</Button></Link>
-              <Button variant="primary" onClick={() => openChat()}> Contact </Button>
+              <Link to={`/listings/user/${listing.user.id}`}> <Button variant="outline-primary">See other listings</Button></Link>
+              <Button variant="outline-primary" onClick={() => openChat()}> Contact </Button>
             </Card.Body>
             </Card>
             <Card style={{ width: '25rem' }}>

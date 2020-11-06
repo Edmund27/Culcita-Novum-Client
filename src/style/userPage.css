@@ -1,0 +1,16 @@
+.userPage {
+  background-image: url("https://res.cloudinary.com/dztzswpcp/image/upload/v1604669052/a9db66db2eb5fbb85f497413f6165f22_hono1l.jpg");
+  opacity: 0.9;
+  width: 100%;
+  height: 300px;
+}
+
+.userInfo {
+  background-color: white;
+  opacity: 0.9;
+  width: 100%;
+  height: 200px;
+  margin: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
