@@ -1,6 +1,6 @@
 import React, {useEffect}from "react";
 import { Link } from "react-router-dom";
-import {Card, CardColumns, Button} from "react-bootstrap"
+import {Card, CardColumns, Button, Form} from "react-bootstrap"
 import { fetchUserInfo} from "../../store/user/actions"
 import { useDispatch, useSelector } from "react-redux";
 import {  selectUser } from "../../store/user/selectors"
@@ -11,8 +11,12 @@ export default function MyPage() {
     dispatch(fetchUserInfo());
   }, [dispatch]);
   const user = useSelector(selectUser)
-  // console.log("MyPage -> user", user.listings)
+  console.log("MyPage -> user", user.listings )
   
+  // function toggle() {
+
+    
+  // }
   
   return (
     <div>
@@ -28,6 +32,16 @@ return <Card style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.
       <Card.Text>
         {l.description}
       </Card.Text>
+      {/* <Form>
+  <Form.Check 
+    type="switch"
+    id="custom-switch"
+    label="Check this switch"
+  />
+  </Form> */}
+  <Button >
+        {l.availability === "available" ? "✅" : "❌"}
+        </Button>
     </Card.Body>
   </Card>
 
