@@ -1,4 +1,4 @@
-import React, {useEffect}from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {Card, CardColumns, Button, Form, Container} from "react-bootstrap"
 import { fetchUserInfo} from "../../store/user/actions"
@@ -11,13 +11,13 @@ export default function MyPage() {
     dispatch(fetchUserInfo());
   }, [dispatch]);
   const user = useSelector(selectUser)
-  console.log("MyPage -> user", user.listings )
-  
+  console.log("MyPage -> user", user.listings)
+
   // function toggle() {
 
-    
+
   // }
-  
+
   return (
     <div>
       <div className="dashboard"><Container>
@@ -43,18 +43,18 @@ return <Card style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.
     label="Check this switch"
   />
   </Form> */}
-  <Button >
-        {l.availability === "available" ? "✅" : "❌"}
-        </Button>
-    </Card.Body>
-  </Card>
+              <Button >
+                {l.availability === "available" ? "✅" : "❌"}
+              </Button>
+            </Card.Body>
+          </Card>
 
-  })}
-  </div>
+        })}
+      </div>
 
-<Button variant="light" style={{ width: "25%", padding: "20px",  opacity: "0.9"}} >
+      <Button variant="light" style={{ width: "25%", padding: "20px", opacity: "0.9" }} >
         <Link to={`/create`}> post a new ad </Link>
-      </Button> 
+      </Button>
     </div>
   )
 }

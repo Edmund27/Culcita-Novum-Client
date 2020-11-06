@@ -60,8 +60,8 @@ export default function ChatPage() {
                                 {!user.chat && <div>click to send you first message...</div>}
                             </ListGroup.Item>
                         )
-                    }
-                }
+                    } return null
+                } return null
             }))}
         </ListGroup>
     </div>
