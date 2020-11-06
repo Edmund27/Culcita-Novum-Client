@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Card, CardGroup, Container, Button, Jumbotron, Col, Image } from "react-bootstrap";
+import { Card, CardGroup, Container, Button, Image } from "react-bootstrap";
 import "../../style/map.css";
 import "../../style/listingPage.css"
 import moment from "moment";
@@ -52,21 +52,21 @@ export default function ListingPage() {
   }
 
   return listing ? (
-<>
-<div className="listingPage">
-    <Container width="90%">
-      <div className="reuseText">
-<h1 className="reuse"> (Re-Use) </h1>
-<p classname="infoWaste"> <em> 
-- It saves tons of waste from ending up in landfills which is actually the worst option of all aside from the ocean due to the methane gas issue (86 times stronger than CO2)
+    <>
+      <div className="listingPage">
+        <Container width="90%">
+          <div className="reuseText">
+            <h1 className="reuse"> (Re-Use) </h1>
+            <p classname="infoWaste"> <em>
+              - It saves tons of waste from ending up in landfills which is actually the worst option of all aside from the ocean due to the methane gas issue (86 times stronger than CO2)
   </em></p>
-    </div>
-    </Container>
-    </div>
+          </div>
+        </Container>
+      </div>
       <Container>
         <CardGroup>
           <Card >
-            <MapContainer style={{ width: '300px', height: "300px", marginLeft: "auto", marginRight: "auto"}} center={[listing.user.lat, listing.user.lng]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer style={{ width: '300px', height: "300px", marginLeft: "auto", marginRight: "auto" }} center={[listing.user.lat, listing.user.lng]} zoom={13} scrollWheelZoom={false}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -74,18 +74,18 @@ export default function ListingPage() {
               <Marker position={[listing.user.lat, listing.user.lng]}>
               </Marker>
             </MapContainer>
-            
-              
-            
+
+
+
             <Card.Body>
-            <Image style={{marginLeft: "20px", marginBottom: "20px"}} src={listing.user.image} roundedCircle width="20%"/>
+              <Image style={{ marginLeft: "20px", marginBottom: "20px" }} src={listing.user.image} roundedCircle width="20%" />
               <Card.Title>Posted By: {listing.user.name}</Card.Title>
     Posting since: {moment(listing.user.createdAt).format("DD-MM-YYYY")}
               <Link to={`/listings/user/${listing.user.id}`}> <Button variant="outline-primary">See other listings</Button></Link>
               <Button variant="outline-primary" onClick={() => openChat()}> Contact </Button>
             </Card.Body>
-            </Card>
-            <Card style={{ width: '25rem' }}>
+          </Card>
+          <Card style={{ width: '25rem' }}>
             <Card.Img variant="top" src={listing.image} />
             <Card.Body>
               <Card.Title>{listing.title}</Card.Title>
@@ -98,14 +98,14 @@ export default function ListingPage() {
               <small className="text-muted"> Posted on: {moment(listing.createdAt).format("DD-MM-YYYY")}</small>
             </Card.Footer>
           </Card>
-</CardGroup>
-            
-        
+        </CardGroup>
 
-         
-        
+
+
+
+
       </Container>
-  </>
+    </>
   ) : null
 
 } 

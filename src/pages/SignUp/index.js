@@ -151,7 +151,7 @@ export default function SignUp() {
           onChange={handleUpload}
 
         />
-        {loadingImage ? "Uploading your image..." : <img  src={image} />}
+        {loadingImage ? "Uploading your image..." : <img alt="upload" src={image} />}
         <br />
 
         <PlacesAutocomplete

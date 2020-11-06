@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Card, CardGroup, Button, Jumbotron, Container, Col, Image } from "react-bootstrap";
+import { Card, Button, Container, Image } from "react-bootstrap";
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
 import "../../style/userPage.css"
@@ -28,24 +28,24 @@ export default function UserPage() {
 
   return data ? (
 
-    <div> 
+    <div>
       <div className="userPage">
         <Container>
           <div className="userInfo">
-            
-        <Image width="10%" src={data && data.image} roundedCircle style={{align: "left"}}/>
-          <h1>{data.name}</h1>
-          <p>
-            Has {data.listings.length === 0 ? "no" : data.listings.length} ads
+
+            <Image width="10%" src={data && data.image} roundedCircle style={{ align: "left" }} />
+            <h1>{data.name}</h1>
+            <p>
+              Has {data.listings.length === 0 ? "no" : data.listings.length} ads
     </p>
-    </div>
+          </div>
         </Container>
       </div>
-    
+
       <div className="row">
         {data.listings.map((l) => {
-          return <Card style={{width: "350px", padding: "20px", margin: "20px", opacity: "0.9"}} >
-            <Card.Img variant="top" src={l.image} width="60%" height="250px"/>
+          return <Card style={{ width: "350px", padding: "20px", margin: "20px", opacity: "0.9" }} >
+            <Card.Img variant="top" src={l.image} width="60%" height="250px" />
             <Card.Body>
               <Card.Title>{l.title}</Card.Title>
               <Card.Text>
@@ -53,15 +53,15 @@ export default function UserPage() {
               </Card.Text>
             </Card.Body>
             <Button variant="outline-primary">
-        <Link to={`/listings/${l.id}`}> Check me out </Link>
-      </Button>
+              <Link to={`/listings/${l.id}`}> Check me out </Link>
+            </Button>
             <Card.Footer>
               <small className="text-muted">{l.createdAt}</small>
             </Card.Footer>
           </Card>
         })}
-</div>
-     
+      </div>
+
     </div>) : null
   // console.log("WHAT IS LISTING", listing)
   //   return listing ? ( 
