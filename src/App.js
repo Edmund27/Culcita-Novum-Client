@@ -14,10 +14,10 @@ import ListingPage from "./pages/ListingPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
-import  UserPage from "./pages/UserPage"
-import { Jumbotron } from "react-bootstrap";
+import UserPage from "./pages/UserPage"
 
-
+import ChatPage from "./pages/ChatPage";
+import ChatWindow from "./components/ChatWindow";
 
 
 
@@ -43,6 +43,8 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/create" component={CreateListing} />
+        <Route path="/messages" component={ChatPage} />
+        <Route path="/chat-screen" component={ChatWindow} />
       </Switch>
     </div>
   );

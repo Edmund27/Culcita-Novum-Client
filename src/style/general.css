@@ -1,0 +1,88 @@
+
+.container {
+    text-align: center;
+    /* display: inline-block;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 100px; */
+  }
+
+  .textInput {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-left: 30px;
+    margin-right: 50px;
+    margin-bottom: 100px; */
+  }
+  .messageInput {
+    position: fixed;
+    bottom: 0%;
+    width:100%; 
+  }
+
+  .nameCard {
+    /* position: fixed; */
+    top: 4%;
+    width:100%; 
+  }
+
+  .card {
+    text-align: center;
+    display: flex;
+  }
+
+  .header {
+    text-align: center;
+  }
+
+  .logo {
+    display: inline-block;
+  }
+
+  .homeContainer {
+    width: 70%;
+    height: 500px;
+  border: 10px solid blue;
+  padding: 30px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto
+  }
+
+  .secondContainer {
+    text-align: center;
+    width: 70%;
+  border: 10px solid black;
+  padding: 30px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto
+  }
+  .thirdContainer {
+    text-align: center;
+    width: 20%;
+  border: 5px solid black;
+  padding: 5px;
+  margin: 5px;
+  margin-left: auto;
+  margin-right: auto
+  }
+
+  .online {
+    float: right;
+    color: green;
+  }
+  
+  .offline {
+    float: right;
+    color: red;
+  }
+
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
