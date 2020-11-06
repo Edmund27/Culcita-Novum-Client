@@ -1,0 +1,52 @@
+.message-time {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.4rem;
+    color: darkgray
+  }
+  
+  .message {
+      margin-bottom: 20px;
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: left;
+    }
+  
+  .message.me .username {
+      display: none;
+    }
+  
+  .message.him .username {
+      font-weight: bold;
+      font-size: 0.4rem;
+      color: black;
+      margin-bottom: 2px;
+      float:left
+    }
+  
+  .message.me {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 5px;
+    }
+  
+  .message.me .message-body {
+      background-color: #0084ff;
+      color: fff;
+      max-width: 80%;
+      display: inline-block;
+      padding: 20px;
+      border: 1px;
+      border-radius: 30px;
+      padding-right: 50px;
+    }
+  .message.him .message-body {
+      background-color: #eee;
+      max-width: 80%;
+      display: inline-block;
+      padding: 20px;
+      border: 1px;
+      border-radius: 30px;
+      padding-right: 50px;
+    }
+    
+  
+    

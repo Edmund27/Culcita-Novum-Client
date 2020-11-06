@@ -7,6 +7,7 @@ import {
   showMessageWithTimeout,
   setMessage
 } from "../appState/actions";
+import socket from '../../socket'
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
@@ -48,11 +49,12 @@ export const signUp = (name, surname, email, password, image, lat, lng) => {
         surname,
         email,
         password,
-        image, 
-        lat, 
+        image,
+        lat,
         lng
       });
 
+      socket.emit('openMessages', email)
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
@@ -77,7 +79,9 @@ export const login = (email, password) => {
         email,
         password
       });
-console.log(response.data)
+
+      socket.emit('openMessages', email)
+      console.log(response.data)
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
       dispatch(appDoneLoading());
@@ -131,6 +135,7 @@ export const getUserWithStoredToken = () => {
 
       // token is still valid
       dispatch(tokenStillValid(response.data));
+      socket.emit('openMessages', response.data.email)
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

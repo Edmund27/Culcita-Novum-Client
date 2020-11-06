@@ -11,7 +11,7 @@ export default function LoggedIn() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const history = useHistory();
-  function onClick() { 
+  function onClick() {
     dispatch(logOut())
     history.push("/")
   }
@@ -19,6 +19,7 @@ export default function LoggedIn() {
     <>
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>
       <NavbarItem path="/mypage" linkText="My Page" />
+      <NavbarItem path="/messages" linkText="Messages" />
       <Button onClick={onClick}>Logout</Button>
     </>
   );
