@@ -17,7 +17,7 @@ export default function LoggedIn() {
   }
   return (
     <>
-      <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>
+      <Nav.Item style={{ padding: ".5rem 1rem" }}> <em>Logged in as {user.name}</em></Nav.Item>
       <NavbarItem path="/mypage" linkText="My Page" />
       <NavbarItem path="/messages" linkText="Messages" />
       <Button onClick={onClick}>Logout</Button>

@@ -21,3 +21,7 @@
   font-family: "Major Mono Display", monospace;
   font-size: 40px;
 }
+.alignCards {
+  margin-left: 45px;
+  margin-right: 45px;
+}

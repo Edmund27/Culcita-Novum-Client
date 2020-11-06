@@ -27,7 +27,12 @@ export default function MyPage() {
 
 </div></Container>
 </div>
+<Container>
+<Button variant="light" style={{ width: "30%", padding: "20px", opacity: "0.9", marginLeft: "auto", marginRight: "auto"}} >
+        <Link to={`/create`}> Post a new ad </Link>
+      </Button>
 <div className="row">
+
   {user.listings && user.listings.map((l)=> {
 return <Card style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.9"}}>
     <Card.Img variant="top" src={l.image} />
@@ -51,10 +56,10 @@ return <Card style={{width: "25%", padding: "20px", margin: "20px", opacity: "0.
 
         })}
       </div>
-
-      <Button variant="light" style={{ width: "25%", padding: "20px", opacity: "0.9" }} >
-        <Link to={`/create`}> post a new ad </Link>
-      </Button>
+  
+  </Container>
+     
+     
     </div>
   )
 }
